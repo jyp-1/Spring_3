@@ -26,9 +26,11 @@ public class NoticeService {
 		public List<NoticeVO> noticeList() throws Exception{
 			return noticeDAO.noticeList();
 		}
+		
 		public NoticeVO noticeSelect(int num) throws Exception{
 			return noticeDAO.noticeSelect(num);
 		}
+		
 		public int noticeUpdate(NoticeVO noticeVO) throws Exception{
 			return noticeDAO.noticeUpdate(noticeVO);
 		}
