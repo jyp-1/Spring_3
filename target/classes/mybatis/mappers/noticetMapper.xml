@@ -14,7 +14,7 @@
 		update notice set title=#{title}, contents=#{contents} where num=#{num}
 	</update>
 
-	<select id="noticeList" parameterType="java.util.Map" resultType="com.jy.s3.model.board.NoticeVO">
+	<select id="noticeList" parameterType="com.jy.s3.util.RowMaker" resultType="com.jy.s3.model.board.NoticeVO">
 		select * from
 		(select N.*, rownum R from
 		(select * from notice order by num desc) N)

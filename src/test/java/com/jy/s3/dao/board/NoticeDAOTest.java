@@ -33,12 +33,10 @@ public class NoticeDAOTest extends TestAbstractCase{
 		
 	}
 	
-	//@Test
-	public void noticeListTest() throws Exception{
-		List<NoticeVO> li = noticeDAO.noticeList();
-		assertNotEquals(0, li.size());
-	}
-	
+	/*
+	 * //@Test public void noticeListTest() throws Exception{ List<NoticeVO> li =
+	 * noticeDAO.noticeList(); assertNotEquals(0, li.size()); }
+	 */
 	
 	//@Test
 	public void noticeSelectTest() throws Exception{
