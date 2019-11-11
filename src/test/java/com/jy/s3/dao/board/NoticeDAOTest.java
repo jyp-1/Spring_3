@@ -18,11 +18,16 @@ public class NoticeDAOTest extends TestAbstractCase{
 	@Inject
 	private NoticeDAO noticeDAO;
 	
-	@Test
+	//@Test
 	public void checkDAO() throws Exception{
 		assertNotNull(noticeDAO);
 	}
 	
+	@Test
+	public void noticeCountTest() throws Exception{
+		 int count =noticeDAO.noticeCount();
+		 assertEquals(95, count);
+	}
 	
 	public void noticeUpdateTest()throws Exception{
 		
@@ -50,12 +55,14 @@ public class NoticeDAOTest extends TestAbstractCase{
 	
 	//@Test
 	public void noticeInsertTest() throws Exception {
+		for(int i=0; i<120;i++) {
 		NoticeVO noticeVO = new NoticeVO();
-		noticeVO.setTitle("t2");
-		noticeVO.setWriter("w2");
-		noticeVO.setContents("c2");
+		noticeVO.setTitle("nt"+i);
+		noticeVO.setWriter("nw"+i);
+		noticeVO.setContents("nc"+i);
 		int result = noticeDAO.noticeInsert(noticeVO);
-			assertEquals(1, result);
+		}
+		/* assertEquals(1, result); */
 	}
 	
 	
