@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.web.bind.annotation.SessionAttribute;
+
 /**
  * Servlet Filter implementation class LoginFilter
  */
@@ -34,12 +36,13 @@ public class LoginFilter implements Filter {
 	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
 	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+
+		HttpSession session=((HttpServletRequest)request).getSession();
+		Object obj =session.getAttribute("member");
 		
-		HttpSession session =((HttpServletRequest)request).getSession();
-		Object obj=session.getAttribute("member");
-		
-		if(obj==null) {
-		chain.doFilter(request, response);
+		if(obj !=null) {
+			
+			chain.doFilter(request, response);
 		}else {
 			((HttpServletResponse)response).sendRedirect("../");
 		}
