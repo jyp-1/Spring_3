@@ -13,7 +13,22 @@
 
 	<div>
 		<div class="container">
+
 			<h1>Notice List</h1>
+
+			<form id="frm" action="./noticeList" method="get">
+				<input type="hidden" id="curPage" value="1" name="curPage">
+				<select name="kind">
+					<option id="kt" value="kt">Title</option>
+					<option id="kw" value="kw">Writer</option>
+					<option id="kc" value="kc">Contents</option>
+				</select> 
+				
+				<input type="text" name="search" value="${pager.search}">
+				<button>search</button>
+			</form>
+
+
 			<table class="table">
 				<tr>
 					<td>NUM</td>
@@ -35,23 +50,38 @@
 			</table>
 
 
-			<div>
-				<ul class="pagination">
-				<c:if test="${pager.curBlock gt 1}">
-					<li><a href="./noticeList?curPage=${pager.startNum-1}">이전</a></li>
-				</c:if>
-						<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
-							<li><a href="./noticeList?curPage=${i}">${i}</a></li>
-						</c:forEach>
-				<c:if test="${pager.curBlock lt pager.totalBlock }">
-					<li><a href="./noticeList?curPage=${pager.lastNum+1}">다음</a></li>
-				</c:if>
-				</ul>
-			</div>
+
+			<c:if test="${pager.curBlock gt 1}">
+				<span id="${pager.startNum-1}" class="list">[이전]</span>
+			</c:if>
+			<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
+				<span id="${i}" class="list">${i}</span>
+			</c:forEach>
+			<c:if test="${pager.curBlock lt pager.totalBlock }">
+				<span id="${pager.lastNum+1}" class="list">[다음]</span>
+			</c:if>
 			
+
+
+			<script type="text/javascript">
+					var kind ='${pager.kind}'
+					if(kind==''){
+						kind='kt'
+					}
+					$("#"+kind).prop("selected", true);
+					$(".list").click(function() {
+						$("#curPage").val($(this).attr("id"));
+						$("#frm").submit();
+					});
+					
+				</script>
+				
 			<a href="./noticeWrite">Write</a>
-			
 		</div>
+
+
+
 	</div>
+
 </body>
 </html>

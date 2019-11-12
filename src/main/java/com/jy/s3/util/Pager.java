@@ -2,20 +2,84 @@ package com.jy.s3.util;
 
 public class Pager {
 
-	private Integer curPage;
-	private Integer perPage;
+
+
+	private String kind;
+	private String search;
+		
+	public String getKind() {
+		return kind;
+	}
+	
+	public void setKind(String kind) {
+		this.kind = kind;
+	}
+	
+	public String getSearch() {
+		if(search==null) {
+			search="";
+		}
+		return search;
+	}
+	public void setSearch(String search) {
+		this.search = search;
+	}
+	
+	//DB///////////////////////////////////////////////////////////
+	private Integer startRow;
+	private Integer lastRow;
+	
+	
+	public Integer getStartRow() {
+		return startRow;
+	}
+	
+	public void setStartRow(Integer startRow) {
+		this.startRow = startRow;
+	}
+	
+	public Integer getLastRow() {
+		return lastRow;
+	}
+	
+	public void setLastRow(Integer lastRow) {
+		this.lastRow = lastRow;
+	}
+	
+	
+	
+	////////////////////////////////////////////////////
+	//view
+	
 	private Integer startNum;
 	private Integer lastNum;
 	private Integer curBlock;
 	private Integer totalBlock;
 	
-
-
+	public Integer getStartNum() {
+		return startNum;
+	}
+		
+	public Integer getLastNum() {
+		return lastNum;
+	}
+	
+	public Integer getPerPage() {
+		return perPage;
+	}
+	
+	public void setPerPage(Integer perPage) {
+		this.perPage = perPage;
+	}
+	
+	
 
 
 	public Pager() {
+		if(perPage ==null || perPage==0)
 		perPage=10;
 	}
+	
 	public Integer getTotalBlock() {
 		return totalBlock;
 	}
@@ -24,21 +88,14 @@ public class Pager {
 		return curBlock;
 	}
 	
-
-	public Integer getStartNum() {
-		return startNum;
-	}
-
-
-
-	public Integer getLastNum() {
-		return lastNum;
-	}
-
-
+	
+	////////////////////////////////////////////////////////
+	
+	private Integer curPage;
+	private Integer perPage;
 
 	public Integer getCurPage() {
-		if(this.curPage==null) {
+		if(this.curPage==null || curPage==0) {
 			this.curPage=1;
 		}
 		return curPage;
@@ -85,20 +142,11 @@ public class Pager {
 	}
 	
 	
-	
-	
-	
-	
-	
-	
-	public RowMaker makeRow() {
+
+	public void makeRow() {
 		//rownum 계산 
-		int startRow = (this.getCurPage()-1)*perPage+1;
-		int lastRow = this.getCurPage()*perPage;
-		RowMaker rowMaker = new RowMaker();
-		rowMaker.setStartRow(startRow);
-		rowMaker.setLastRow(lastRow);
-		return rowMaker;
+		this.startRow=(this.getCurPage()-1)*this.getPerPage()+1;
+		this.lastRow = this.getCurPage()*this.getPerPage();
 		
 	}
 	

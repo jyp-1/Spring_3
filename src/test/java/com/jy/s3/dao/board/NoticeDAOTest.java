@@ -11,6 +11,7 @@ import org.junit.Test;
 
 import com.jy.s3.TestAbstractCase;
 import com.jy.s3.model.board.NoticeVO;
+import com.jy.s3.util.Pager;
 
 
 public class NoticeDAOTest extends TestAbstractCase{
@@ -24,8 +25,8 @@ public class NoticeDAOTest extends TestAbstractCase{
 	}
 	
 	@Test
-	public void noticeCountTest() throws Exception{
-		 int count =noticeDAO.noticeCount();
+	public void noticeCountTest(Pager pager) throws Exception{
+		 int count =noticeDAO.noticeCount(pager);
 		 assertEquals(95, count);
 	}
 	
