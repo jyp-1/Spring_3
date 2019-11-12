@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.jy.s3.dao.board.QnaDAO;
 import com.jy.s3.model.board.QnaVO;
+import com.jy.s3.util.Pager;
 
 @Service
 public class QnaService {
@@ -16,8 +17,12 @@ public class QnaService {
 	private QnaDAO qnaDAO;
 	
 	
-	public List<QnaVO> QnaList(QnaVO qnaVO)throws Exception{
-		return qnaDAO.qnaList(qnaVO);
+	public List<QnaVO> qnaList(Pager pager)throws Exception{
+		//받은 데이터 계산
+		//DB에 보내기 위해서 
+		pager.makeRow();
+		pager.makePage(qnaDAO.qnaCount());
+		return qnaDAO.qnaList(pager);
 	}
 	
 	

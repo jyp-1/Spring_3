@@ -2,6 +2,8 @@ package com.jy.s3.model.board;
 
 import java.sql.Date;
 
+// VO DTO 는 데이터를 담는 도구 Container 같은 역할 
+
 public class QnaVO {
 	
 	private int num; 
