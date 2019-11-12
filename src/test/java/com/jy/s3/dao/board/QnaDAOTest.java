@@ -23,12 +23,12 @@ public class QnaDAOTest extends TestAbstractCase{
 		//assertNotEquals(0, ar.size());
 	}
 	
-	//@Test
+	@Test
 	 public void checkDAO(){			//DAO가 null인지 아닌지 확인 테스트
 	  assertNotNull(qnaDAO);
 	 }
 	 
-	 @Test
+	// @Test
 	 public void qnaInsertTest() throws Exception {
 		 for(int i=0; i<100;i++) {
 			 QnaVO qnaVO = new QnaVO();

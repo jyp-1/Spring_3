@@ -29,7 +29,7 @@ public class NoticeService {
 		
 		public List<NoticeVO> noticeList(Pager pager) throws Exception{
 			pager.makeRow();
-			pager.makePager(noticeDAO.noticeCount(pager));
+			pager.makePage(noticeDAO.noticeCount(pager));
 			
 			return noticeDAO.noticeList(pager);
 		}
