@@ -21,7 +21,7 @@ public class QnaService {
 		//받은 데이터 계산
 		//DB에 보내기 위해서 
 		pager.makeRow();
-		pager.makePage(qnaDAO.qnaCount());
+		pager.makePage(qnaDAO.qnaCount(pager));
 		return qnaDAO.qnaList(pager);
 	}
 	

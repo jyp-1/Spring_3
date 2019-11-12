@@ -28,6 +28,17 @@ public class QnaDAOTest extends TestAbstractCase{
 	  assertNotNull(qnaDAO);
 	 }
 	 
+	 @Test
+	 public void qnaInsertTest() throws Exception {
+		 for(int i=0; i<100;i++) {
+			 QnaVO qnaVO = new QnaVO();
+			 qnaVO.setTitle("qt"+i);
+			 qnaVO.setWriter("qw"+i);
+			 qnaVO.setContents("qc"+i);
+			 int result = qnaDAO.qnaInsert(qnaVO);
+		 }
+	 }
+	 
 	 
 	 
 	 

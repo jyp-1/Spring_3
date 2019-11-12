@@ -6,9 +6,31 @@ public class Pager {
 		
 	private Integer curPage; //현재 페이지번호 
 	private Integer perPage; //불러올때의 글의 갯수
+	private String kind;	 //검색 종류
+	private String search;	 //검색어
 	
 	
 	
+	public String getKind() {
+		return kind;
+	}
+
+	public void setKind(String kind) {
+		this.kind = kind;
+	}
+
+	public String getSearch() {
+		if(search==null) {
+			search="";
+		}
+		return search;
+	}
+
+	public void setSearch(String search) {
+		this.search = search;
+	}
+
+
 	//DB 계산 하나 
 	private Integer startRow; //시작 rownum
 	private Integer lastRow; // 끝 rownum 
