@@ -43,7 +43,9 @@
 				<c:forEach items="${list}" var = "vo">
 					<tr>
 					<td>${vo.num}</td>
-					<td><a href="./qnaSelect?num=${vo.num}">${vo.title}</a></td>
+					<td>
+					<c:forEach begin="1" end="${vo.depth}">--</c:forEach>
+					<a href="./qnaSelect?num=${vo.num}">${vo.title}</a></td>
 					<td>${vo.writer}</td>
 					<td>${vo.reg_date}</td>
 					<td>${vo.hit}</td>
@@ -59,8 +61,14 @@
 			<span id="${i}" class="list">${i}</span>
 			</c:forEach>
 			<c:if test="${pager.curBlock lt pager.totalBlock}">
-			<span id="${pager.lastNum+1}" class="list">[다음]</span>
+			<span id="${pager.lastNum+1}" class="list">[다음]</span>			
 			</c:if>
+			
+			<div>
+				<a href="./qnaWrite">Write</a>
+			</div>
+			
+			
 			
 			<script type="text/javascript">
 			var kind='${pager.kind}'

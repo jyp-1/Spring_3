@@ -21,6 +21,20 @@ public class QnaController {
 	@Inject
 	private QnaService qnaService;
 	
+	@RequestMapping(value="qnaReply", method = RequestMethod.POST)
+	public String qnaReply(QnaVO qnaVO)throws Exception {
+		 int result = qnaService.qnaReply(qnaVO);
+		 return "redirect:./qnaList";
+	}
+	
+	
+	@RequestMapping(value="qnaReply", method = RequestMethod.GET)
+	public void qnaReply(int num, Model model)throws Exception{
+		model.addAttribute("num", num );
+	}
+	
+	
+	
 	@RequestMapping(value = "qnaList", method = RequestMethod.GET)
 	public ModelAndView qnaList(Pager pager)throws Exception {
 				
@@ -32,6 +46,25 @@ public class QnaController {
 		return mv;
 		
 	}
+	
+	@RequestMapping(value="qnaWrite", method = RequestMethod.POST)
+	public String qnaWrite(QnaVO qnaVO) throws Exception{
+		int result = qnaService.qnaWrite(qnaVO);
+		return "redirect: ./qnaList";
+	}
+	
+	@RequestMapping(value="qnaWrite", method = RequestMethod.GET)
+	public void qnaWrite() throws Exception{
+		
+	}
+	
+	@RequestMapping(value="qnaSelect", method = RequestMethod.GET)
+	public void qnaSelect(Model model, int num)throws Exception {
+		QnaVO qnaVO = qnaService.qnaSelect(num);
+		model.addAttribute("qs", qnaVO);
+	}
+	
+	
 	
 	
 	
